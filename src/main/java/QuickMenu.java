@@ -26,19 +26,19 @@ public class QuickMenu extends Application {
         TextField search = new TextField();
         TextFields.bindAutoCompletion(search, ap.filesString);
 
-        search.textProperty().addListener((observable, oldValue, newValue) -> {
+        /*search.textProperty().addListener((observable, oldValue, newValue) -> {
 
             //System.out.println(newValue);
             //System.out.println(observable);
             //primaryStage.close();
         });
-
+        */
         search.setOnKeyPressed(new EventHandler<KeyEvent>() {
            @Override
            public void handle(KeyEvent ke) {
                if(ke.getCode().equals(KeyCode.ENTER)) {
                    try {
-                       System.out.println(search.getText());
+                       //System.out.println(search.getText());
                        Runtime.getRuntime().exec(search.getText());
                    } catch (Exception e) {
                        System.out.println(e.getMessage());
