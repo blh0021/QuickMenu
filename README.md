@@ -1,6 +1,8 @@
 # Quick Menu
 ---
 
+![Quick Menu Logo](docs/quickmenu.png)
+
 ## Description
 Quick Menu is a java based utility that provides a simple interface simular to DMenu or Alfred.  
 One key note however is Quick Menu is cross platform and will work on Mac, Linux and Windows.
