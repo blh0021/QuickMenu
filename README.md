@@ -15,7 +15,7 @@ For example on Ubuntu
 apt install openjfx
 ```
 
-![Image running xfce4](./xfce4.gif)
+![Image running xfce4](docs/xfce4.gif)
 
 ## Window Managers Configs
 * [XFCE4](docs/xfce4.md)
