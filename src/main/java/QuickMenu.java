@@ -4,10 +4,10 @@ import javafx.scene.Scene;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import org.controlsfx.control.textfield.AutoCompletionBinding;
 import org.controlsfx.control.textfield.TextFields;
 
 public class QuickMenu extends Application {
@@ -16,7 +16,17 @@ public class QuickMenu extends Application {
     public static void main(String[] args) {
         launch(args);
     }
-    
+
+    private double width = 500;
+
+    private void execute(String text) {
+        try {
+            Runtime.getRuntime().exec(text);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
     @Override
     public void start(Stage primaryStage) {
         ApplicationPath ap = new ApplicationPath();
@@ -24,25 +34,28 @@ public class QuickMenu extends Application {
         primaryStage.setTitle("Quick Menu");
         primaryStage.initStyle(StageStyle.UNDECORATED);
         TextField search = new TextField();
-        TextFields.bindAutoCompletion(search, ap.filesString);
 
-        /*search.textProperty().addListener((observable, oldValue, newValue) -> {
+        AutoCompletionBinding acb = TextFields.bindAutoCompletion(search, ap.filesString);
 
-            //System.out.println(newValue);
-            //System.out.println(observable);
-            //primaryStage.close();
+        acb.setPrefWidth(width);
+
+        acb.setOnAutoCompleted(new EventHandler<AutoCompletionBinding.AutoCompletionEvent<String>>() {
+            @Override
+            public void handle(AutoCompletionBinding.AutoCompletionEvent<String> stringAutoCompletionEvent) {
+                execute(search.getText());
+                primaryStage.close();
+            }
         });
-        */
+
         search.setOnKeyPressed(new EventHandler<KeyEvent>() {
            @Override
            public void handle(KeyEvent ke) {
                if(ke.getCode().equals(KeyCode.ENTER)) {
-                   try {
-                       //System.out.println(search.getText());
-                       Runtime.getRuntime().exec(search.getText());
-                   } catch (Exception e) {
-                       System.out.println(e.getMessage());
-                   }
+                   execute(search.getText());
+                   primaryStage.close();
+               }
+
+               if(ke.getCode().equals(KeyCode.ESCAPE)) {
                    primaryStage.close();
                }
            }
@@ -50,7 +63,7 @@ public class QuickMenu extends Application {
 
         VBox root = new VBox();
         root.getChildren().add(search);
-        primaryStage.setScene(new Scene(root, 500, 50));
+        primaryStage.setScene(new Scene(root, width, 27));
         primaryStage.show();
     }
 }
