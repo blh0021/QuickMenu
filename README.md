@@ -1,4 +1,5 @@
 # Quick Menu
+---
 
 ## Description
 Quick Menu is a java based utility that provides a simple interface simular to DMenu or Alfred.  
@@ -13,3 +14,7 @@ For example on Ubuntu
 ```
 apt install openjfx
 ```
+
+## Window Managers Configs
+* [XFCE4](docs/xfce4.md)
+
