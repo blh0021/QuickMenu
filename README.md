@@ -8,14 +8,29 @@ Quick Menu is a java based utility that provides a simple interface simular to D
 One key note however is Quick Menu is cross platform and will work on Mac, Linux and Windows.
 
 ## Build
-Clone the repo and run `mvn package`
+### Linux / Mac
+    
+To run the project:
+    
+    mvn clean javafx:run
 
-## Using OpenJDK
-If you are using OpenJDK then you will also need to get all of the JavaFx libraries installed as well.
-For example on Ubuntu
-```
-apt install openjfx
-```
+To create a fat jar:
+
+    mvn compile package
+    java -jar shade/quickmenu.jar
+
+
+### Windows
+
+To run the project:
+    
+    mvn compile exec:java
+
+To create a fat jar:
+
+    mvn compile package
+    java -jar shade\quickmenu.jar
+
 
 ![Image running xfce4](docs/xfce4.gif)
 

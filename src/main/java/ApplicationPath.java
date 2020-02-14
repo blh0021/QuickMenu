@@ -1,5 +1,6 @@
 import java.io.File;
 import java.util.*;
+import java.util.stream.Collectors;
 
 class SortByFile implements Comparator<File> {
     public int compare(File a, File b) {
@@ -52,6 +53,10 @@ public class ApplicationPath {
         filesString = new ArrayList<>(new HashSet<>(filesString));
 
         return files;
+    }
+
+    public List<String> filterFiles(String v) {
+        return filesString.stream().filter(s -> s.contains(v)).collect(Collectors.toList());
     }
 
 }

@@ -1,5 +1,7 @@
 target/
 .idea/
 .settings/
+shade/
+quickmenu.iml
 .classpath
 .project
